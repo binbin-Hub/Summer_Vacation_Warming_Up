@@ -13,6 +13,7 @@ def update(request, change_id):
     if request.method == "POST":
         change_obj.imagename = request.POST['imagename']
         change_obj.imageinfo = request.POST['imageinfo']
+        change_obj.imgaeinfo2 = request.POST['imageinfo2']
         change_obj.save()
         return redirect(reverse('main'))
     else:
@@ -21,25 +22,18 @@ def update(request, change_id):
 
 
 def new(request):
-    global Channel 
-    return render(request, '.html')
-    Six = Six()
-    Six.photo = request.POST['photo']
-    Six.imagename = request.POST['imagename']
-    Six.imageinfo = request.POST['imageinfo']
-    Six.save()
-    return redirect('main')
-
-def new(request) : 
     form = createForm()
-    if request.method == 'POST':
+    if request.method == "POST" :
+        Six_val = Six()
+        Six_val.photo = request.FILES['photo']
+        Six_val.imagename = request.POST['imagename']
+        Six_val.imageinfo = request.POST['imageinfo']
+        Six_val.imageinfo2 = request.POST['imageinfo2']
+        Six_val.save()
+        return redirect(reverse('main'))
+    else :
         pass
-    elif request.method =='GET':
-        form = createForm()
-        return render(request, 'new.html', {'form':form})
-    else:
-        pass
-
+    return render(request, 'new.html', {'form':form})
 
 def delete(request, delete_id):
     delete_obj = get_object_or_404(Six, pk=delete_id)

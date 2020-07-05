@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="static/home.css">
+    <link rel="stylesheet" href="static/main.css">
 </head>
 <body>
     <div class="title">
-        <center>❣My JIBRI Gallery❣</center>
+        <center>❣My JIBRI Movie Gallery❣</center>
     </div>
     {% for I in six.all %}
     <div class="container">
         <div class = "box1">
-            <center><img src = "{{I.photo.url}}" alt = "{{I.imageinfo.url}}" style = "width : 300px; margin : 10px;"></a></center>
+            <br><br><center><img src = "{{I.photo.url}}" title="{{I.imageinfo2}}" style = "width : 600px; margin : 10px;"></a></center>
         </div>
         <div class = "box2">
             <center>
-                {{I.imagename}} <br>
-                {{I.imageinfo}}
+                <h2><a>{{I.imagename}}</a></h2>
+                <h3><a>{{I.imageinfo}}</a></h3> 
             </center>
         </div>
         <div class = "box3">
             <center>
-                <a href = "{% url 'new'%}">새로만들기</a>
-                <a href = "{% url 'update' I.id %}">수정하기</a>
-                <a href = "{% url 'delete' I.id %}">삭제하기</a>
+                <button><a href = "{% url 'update' I.id %}">수정하기</a></button>
+                <button><a href = "{% url 'delete' I.id %}">삭제하기</a></button><br><br>
+                <button><a href = "{% url 'new'%}">영화 추가하기</a></button>
             </center>
         </div>
     </div>
